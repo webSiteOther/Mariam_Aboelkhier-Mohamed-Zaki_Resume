@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mariam Aboelkhier | Data Analyst Portfolio</title>
+    <title>Mariam Aboelkhier | Data Analyst</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #7DB9B6; /* لون تيفاني مبهج */
-            --secondary-color: #E9EDC9; /* لون أخضر فاتح */
-            --accent-color: #FF9F9F; /* لون مرجاني بسيط */
-            --text-dark: #444;
-            --bg-light: #F8F9FA;
+            --primary-dark: #5a9996;
+            --secondary-color: #E9EDC9; /* أخضر فاتح مريح */
+            --accent-color: #FF9F9F; /* مرجاني هادي */
+            --text-dark: #333;
+            --bg-light: #Fcfcfc;
         }
 
         * {
@@ -19,49 +20,65 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Header & Navigation */
+        /* Navbar */
         header {
-            background: white;
-            padding: 1rem 5%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.8rem;
+            font-weight: 800;
             color: var(--primary-color);
+            letter-spacing: 1px;
         }
 
         nav a {
-            margin-left: 20px;
+            margin-left: 25px;
             text-decoration: none;
             color: var(--text-dark);
-            font-weight: 500;
+            font-weight: 600;
+            position: relative;
             transition: 0.3s;
         }
 
-        nav a:hover {
-            color: var(--primary-color);
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: var(--accent-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
         .hero {
-            height: 60vh;
-            background: linear-gradient(135deg, var(--secondary-color) 0%, #fff 100%);
+            min-height: 80vh;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--secondary-color) 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -71,193 +88,376 @@
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--text-dark);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: #666;
-            max-width: 600px;
+            color: #555;
+            max-width: 700px;
+            margin-bottom: 30px;
         }
 
-        /* Projects Section */
+        /* General Container */
         .container {
-            padding: 50px 8%;
+            padding: 80px 8%;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
             position: relative;
+            color: var(--primary-dark);
         }
 
         .section-title::after {
             content: '';
-            width: 50px;
+            width: 70px;
             height: 4px;
             background: var(--accent-color);
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
+            border-radius: 2px;
         }
 
+        /* Skills Section */
+        .skills-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-box h3 {
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skills-tag {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tag {
+            background: var(--bg-light);
+            color: var(--primary-dark);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 1px solid var(--primary-color);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .tag:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(125, 185, 182, 0.4);
+        }
+
+        /* Projects Section - 2x2 Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(2, 1fr); /* شبكة 2 في 2 */
+            gap: 40px;
         }
 
         .project-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            group: hover;
         }
 
-        .project-card:hover {
-            transform: translateY(-10px);
+        .image-container {
+            overflow: hidden;
+            position: relative;
         }
 
         .project-card img {
             width: 100%;
-            height: 250px;
+            height: 350px; /* لتكبير الصور وتوضيحها */
             object-fit: cover;
-            border-bottom: 3px solid var(--secondary-color);
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.08); /* تأثير التكبير عند الوقوف بالماوس */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(125, 185, 182, 0.85); /* لون شفاف */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay span {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: 2px solid white;
+            padding: 10px 25px;
+            border-radius: 30px;
         }
 
         .project-info {
-            padding: 20px;
+            padding: 25px;
+            text-align: center;
+            background: white;
+            position: relative;
+            z-index: 2;
         }
 
         .project-info h3 {
+            color: var(--primary-dark);
+            font-size: 1.4rem;
             margin-bottom: 10px;
-            color: var(--primary-color);
         }
 
-        /* Skills Section */
-        .skills-tag {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
+        /* Dynamic Scroll Animation Classes */
+        .hidden {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
         }
 
-        .tag {
-            background: var(--secondary-color);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
+        .show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Footer */
         footer {
-            background: #fff;
-            padding: 40px 0;
+            background: white;
+            padding: 50px 0 20px;
             text-align: center;
-            margin-top: 50px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.02);
+        }
+
+        .social-links {
+            margin: 20px 0;
         }
 
         .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background: var(--bg-light);
+            border-radius: 50%;
             font-size: 1.5rem;
-            margin: 0 15px;
+            margin: 0 10px;
             color: var(--primary-color);
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            color: var(--accent-color);
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
         }
 
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .project-card {
-            animation: fadeIn 0.8s ease forwards;
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: 1fr; /* يرجع عمود واحد في الشاشات الصغيرة */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">Mariam.Analyst</div>
+        <div class="logo">Mariam Aboelkhier</div>
         <nav>
             <a href="#about">About</a>
-            <a href="#projects">Portfolio</a>
-            <a href="mailto:mariamaboelkhier@outlook.com">Contact</a>
+            <a href="#skills">Skills</a>
+            <a href="#portfolio">Portfolio</a>
         </nav>
     </header>
 
     <section class="hero" id="about">
-        <h1>Hi, I'm Mariam Aboelkhier</h1>
-        <p>Data Analyst & Power BI Developer. I turn complex data into beautiful, interactive stories that drive decisions.</p>
-        <div class="skills-tag">
-            <span class="tag">Power BI</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Python</span>
-            <span class="tag">Excel</span>
-            <span class="tag">Data Visualization</span>
-            <span class="tag">DAX</span>
-        </div>
-    </section>
-
-    <div class="container" id="projects">
-        <h2 class="section-title">My Data Visualizations</h2>
-        
-        <div class="projects-grid">
-            <div class="project-card">
-                <img src="photo1.jpeg" alt="Sales Overview Dashboard">
-                <div class="project-info">
-                    <h3>Mobile Sales Overview</h3>
-                    <p>Comprehensive analysis of mobile units, manufacturers, and market trends across decades.</p>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <img src="photo2.jpeg" alt="Sales Analysis Overview">
-                <div class="project-info">
-                    <h3>Global Sales Trend</h3>
-                    <p>Interactive sales analysis tracking revenue, profit margins, and performance across countries.</p>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <img src="photo3.jpeg" alt="Customer Behavior Analysis">
-                <div class="project-info">
-                    <h3>Customer Behavior Insights</h3>
-                    <p>Deep dive into customer segments, top buyers, and geographical distribution.</p>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <img src="photo4.jpeg" alt="Product & Category Analysis">
-                <div class="project-info">
-                    <h3>Product & Category Performance</h3>
-                    <p>Analyzing profit margins by category and pricing strategies for hardware products.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>Let's connect!</p>
-        <div class="social-links">
-            <a href="https://linkedin.com/in/mariam-aboelkhier-7208b3353" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <h1 class="hidden">Hello, I'm <span>Mariam</span></h1>
+        <p class="hidden">A passionate Data Analyst & Power BI Developer from Egypt. I transform complex data into actionable insights and beautiful interactive dashboards to support data-driven decision-making.</p>
+        <div class="social-links hidden">
+            <a href="https://linkedin.com/in/mariam-aboelkhier-7208b3353" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             <a href="https://github.com/mariiamm14" target="_blank"><i class="fab fa-github"></i></a>
             <a href="mailto:mariamaboelkhier@outlook.com"><i class="fas fa-envelope"></i></a>
         </div>
-        <p style="margin-top: 20px; font-size: 0.8rem; color: #888;">&copy; 2026 Mariam Aboelkhier. Built with ❤️ for Data.</p>
+    </section>
+
+    <section class="container" id="skills">
+        <h2 class="section-title hidden">My Expertise</h2>
+        
+        <div class="skills-wrapper">
+            <div class="skill-box hidden">
+                <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
+                <div class="skills-tag">
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">SQL / MySQL</span>
+                    <span class="tag">Excel</span>
+                    <span class="tag">Tableau</span>
+                    <span class="tag">DAX Programming</span>
+                    <span class="tag">Data Visualization</span>
+                    <span class="tag">ETL Processes</span>
+                    <span class="tag">Statistical Analysis</span>
+                </div>
+            </div>
+
+            <div class="skill-box hidden">
+                <h3><i class="fas fa-users"></i> Soft Skills</h3>
+                <div class="skills-tag">
+                    <span class="tag">Analytical Thinking</span>
+                    <span class="tag">Problem-Solving</span>
+                    <span class="tag">Attention to Detail</span>
+                    <span class="tag">Team Collaboration</span>
+                    <span class="tag">Time Management</span>
+                    <span class="tag">Adaptability</span>
+                    <span class="tag">Clear Communication</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="portfolio">
+        <h2 class="section-title hidden">Featured Dashboards</h2>
+        
+        <div class="projects-grid">
+            <div class="project-card hidden">
+                <div class="image-container">
+                    <img src="photo1.jpeg" alt="Mobile Sales Dashboard">
+                    <div class="overlay">
+                        <span>View Insights</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Mobile Sales Overview</h3>
+                    <p>Comprehensive interactive dashboard analyzing 6bn+ mobile units across manufacturers and decades.</p>
+                </div>
+            </div>
+
+            <div class="project-card hidden">
+                <div class="image-container">
+                    <img src="photo2.jpeg" alt="Sales Trend Analysis">
+                    <div class="overlay">
+                        <span>View Insights</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Global Sales Trend</h3>
+                    <p>Tracking revenue, profit margins, and performance across multiple countries and product categories.</p>
+                </div>
+            </div>
+
+            <div class="project-card hidden">
+                <div class="image-container">
+                    <img src="photo3.jpeg" alt="Customer Behavior">
+                    <div class="overlay">
+                        <span>View Insights</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Customer Behavior Analysis</h3>
+                    <p>Deep dive into customer segments, highlighting top buyers and geographical distribution for targeted marketing.</p>
+                </div>
+            </div>
+
+            <div class="project-card hidden">
+                <div class="image-container">
+                    <img src="photo4.jpeg" alt="Product Category">
+                    <div class="overlay">
+                        <span>View Insights</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Product & Category Performance</h3>
+                    <p>Analyzing profit margins by category and optimizing pricing strategies for hardware products.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h3 style="color: var(--primary-dark); margin-bottom: 10px;">Let's Work Together!</h3>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/mariam-aboelkhier-7208b3353" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/mariiamm14" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+        <p style="color: #888; font-size: 0.9rem;">&copy; 2026 Mariam Aboelkhier. Designed with ❤️</p>
     </footer>
 
+    <script>
+        // Intersection Observer to trigger animations on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // العنصر يظهر لما 15% منه يكون في الشاشة
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); // تشغيل الأنيميشن مرة واحدة بس
+                }
+            });
+        }, observerOptions);
+
+        // مراقبة كل العناصر اللي واخدة كلاس hidden
+        document.querySelectorAll('.hidden').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>

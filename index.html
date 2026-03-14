@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariam Aboelkhier | Data Analyst Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #7DB9B6; /* لون تيفاني مبهج */
+            --secondary-color: #E9EDC9; /* لون أخضر فاتح */
+            --accent-color: #FF9F9F; /* لون مرجاني بسيط */
+            --text-dark: #444;
+            --bg-light: #F8F9FA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #fff 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+        }
+
+        /* Projects Section */
+        .container {
+            padding: 50px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 50px;
+            height: 4px;
+            background: var(--accent-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Skills Section */
+        .skills-tag {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: var(--secondary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: #fff;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            margin: 0 15px;
+            color: var(--primary-color);
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .project-card {
+            animation: fadeIn 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Mariam.Analyst</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Portfolio</a>
+            <a href="mailto:mariamaboelkhier@outlook.com">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="about">
+        <h1>Hi, I'm Mariam Aboelkhier</h1>
+        <p>Data Analyst & Power BI Developer. I turn complex data into beautiful, interactive stories that drive decisions.</p>
+        <div class="skills-tag">
+            <span class="tag">Power BI</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Python</span>
+            <span class="tag">Excel</span>
+            <span class="tag">Data Visualization</span>
+            <span class="tag">DAX</span>
+        </div>
+    </section>
+
+    <div class="container" id="projects">
+        <h2 class="section-title">My Data Visualizations</h2>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="photo1.jpeg" alt="Sales Overview Dashboard">
+                <div class="project-info">
+                    <h3>Mobile Sales Overview</h3>
+                    <p>Comprehensive analysis of mobile units, manufacturers, and market trends across decades.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="photo2.jpeg" alt="Sales Analysis Overview">
+                <div class="project-info">
+                    <h3>Global Sales Trend</h3>
+                    <p>Interactive sales analysis tracking revenue, profit margins, and performance across countries.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="photo3.jpeg" alt="Customer Behavior Analysis">
+                <div class="project-info">
+                    <h3>Customer Behavior Insights</h3>
+                    <p>Deep dive into customer segments, top buyers, and geographical distribution.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="photo4.jpeg" alt="Product & Category Analysis">
+                <div class="project-info">
+                    <h3>Product & Category Performance</h3>
+                    <p>Analyzing profit margins by category and pricing strategies for hardware products.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Let's connect!</p>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/mariam-aboelkhier-7208b3353" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/mariiamm14" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="mailto:mariamaboelkhier@outlook.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.8rem; color: #888;">&copy; 2026 Mariam Aboelkhier. Built with ❤️ for Data.</p>
+    </footer>
+
+</body>
+</html>
